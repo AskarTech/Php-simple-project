@@ -7,11 +7,9 @@ echo "</pre>";
 die();
 }
 
-function urlIs($url)
-{
 
-   return $_SERVER["REQUEST_URI"]===url($url);
-
+function urlIs($value) {
+  return $_SERVER['REQUEST_URI'] === $value;
 }
 function authorize($condition, $status = Response::FORBIDDEN) {
   if (! $condition) {

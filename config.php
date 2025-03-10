@@ -6,6 +6,5 @@ return[
             'dbname'=>'my-app',
             'charest'=>'utf8mb4'
            ],
-           'mainPathUrl'=>'/website/php-Demo'
          ];
        

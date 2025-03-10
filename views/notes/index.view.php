@@ -7,14 +7,14 @@
         <ul>
             <?php foreach ($notes as $note) : ?>
             <li>
-                <a href="<?=url("/note?id=" . $note['id']) ?>" class="text-blue-500 hover:underline">
+                <a href="/note?id=<?= $note['id'] ?>" class="text-blue-500 hover:underline">
                     <?= $note['body'] ?>
                 </a>
             </li>
             <?php endforeach; ?>
         </ul>
         <p class="mt-6">
-            <a href=" <?=url("/notes/create")?>" class=" text-blue-500 hover:underline">Create Note</a>
+            <a href="/notes/create" class=" text-blue-500 hover:underline">Create Note</a>
         </p>
     </div>
 </main>
