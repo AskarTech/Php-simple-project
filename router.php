@@ -17,6 +17,7 @@ function abort($code=404)
    require("views/{$code}.php");
    die();
 }
+
 $routes = require('routes.php');
 $requestUrl=parse_url($_SERVER["REQUEST_URI"])["path"];
 // dd($requestUrl);
