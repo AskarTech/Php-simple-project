@@ -2,4 +2,4 @@
 
 $heading="Contant Us";
 
-require('view/contact.view.php');
+require('views/contact.view.php');

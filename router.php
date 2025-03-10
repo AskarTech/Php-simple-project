@@ -19,4 +19,5 @@ function abort($code=404)
 }
 $routes = require('routes.php');
 $requestUrl=parse_url($_SERVER["REQUEST_URI"])["path"];
+// dd($requestUrl);
 routeToController($requestUrl,$routes);
