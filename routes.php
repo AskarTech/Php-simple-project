@@ -7,9 +7,9 @@
 return[
    url('/')=>'Controller\index.php',
    url('/about')=>'Controller\about.php',
-   url('/notes')=>'Controller\notes.php',
-   url('/note')=>'Controller\note.php',
-  url('/notes/create')=>'Controller\note-create.php',
+   url('/notes')=>'Controller\notes\index.php',
+   url('/note')=>'Controller\notes\show.php',
+  url('/notes/create')=>'Controller\notes\create.php',
    url('/contact')=>'Controller\contact.php'
 ];
 ;

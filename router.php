@@ -14,7 +14,7 @@ function routeToController($requestUrl,$routes)
 function abort($code=404)
 {
    http_response_code($code);
-   require("view/{$code}.php");
+   require("views/{$code}.php");
    die();
 }
 $routes = require('routes.php');
