@@ -1,4 +1,6 @@
 <?php
+
+session_start();
 const BASE_PATH = __DIR__.'/../';
 require BASE_PATH.'Core/functions.php';
 
@@ -8,6 +10,10 @@ spl_autoload_register(function ($class) {
  
     require base_path("$class.php");
 });
+
+require base_path('bootstrap.php');
+
+echo session_save_path();
 
 
 $router=new \Core\Router(); 
