@@ -1,37 +1,54 @@
 <?php
 namespace Core;
 
+use Core\Middleware\Middleware;
+
 class Router{
 
    protected $routes = [];
+   
+   public function add($method, $uri, $controller)
+   {
+       $this->routes[] = [
+           'uri' => $uri,
+           'controller' => $controller,
+           'method' => $method,
+           'middleware' => null
+       ];
 
-   protected function add($uri,$controller,$method)
-   {
-      $this->routes[] = [
-         'uri' => $uri,
-         'controller' => $controller,
-         'method' => $method
-      ];
+       return $this;
    }
-   public function get($uri,$controller)
+
+   public function get($uri, $controller)
    {
-      $this->add($uri,$controller,'GET');
-   }  
-   public function post($uri,$controller)
-   {
-      $this->add($uri,$controller,'POST');
+       return $this->add('GET', $uri, $controller);
    }
-   public function put($uri,$controller)
+
+   public function post($uri, $controller)
    {
-      $this->add($uri,$controller,'PUT');
+       return $this->add('POST', $uri, $controller);
    }
-   public function patch($uri,$controller)
+
+   public function delete($uri, $controller)
    {
-      $this->add($uri,$controller,'PATCH');
+       return $this->add('DELETE', $uri, $controller);
    }
-   public function delete($uri,$controller)
+
+   public function patch($uri, $controller)
    {
-      $this->add($uri,$controller,'DELETE');
+       return $this->add('PATCH', $uri, $controller);
+   }
+
+   public function put($uri, $controller)
+   {
+       return $this->add('PUT', $uri, $controller);
+   }
+
+   public function only($key)
+   {
+       $this->routes[array_key_last($this->routes)]['middleware'] = $key;
+
+       return $this;
    }
    
    public function route($uri,$method)
@@ -40,6 +57,7 @@ class Router{
       {
          if($route['uri'] === $uri && $route['method'] ===strtoupper($method))
          {
+            Middleware::resolve($route['middleware']);
 
             return require base_path($route['controller']);
          }
